@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edge-vision"
+version = "0.1.0"
+description = "Edge detection using OpenCV with a clean Python src/ layout and CLI."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Mobin Yousefi", email = "mobin.yousefi@example.com" },
+]
+license = { text = "MIT License" }
+keywords = ["computer-vision", "edge-detection", "opencv", "image-processing"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Image Processing",
+]
+
+dependencies = [
+  "opencv-python>=4.5",
+  "numpy>=1.22",
+  "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black>=24.0.0",
+  "ruff>=0.5.0",
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+edge-vision = "edge_vision.cli:main"
+
+[tool.black]
+line-length = 88
+target-version = ["py39", "py310", "py311"]
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "B"]
+ignore = []
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra"
+testpaths = ["tests"]
